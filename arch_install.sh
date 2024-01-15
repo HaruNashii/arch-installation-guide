@@ -32,11 +32,17 @@ clear
 nano /etc/pacman.d/mirrorlist
 
 pacstrap /mnt base base-devel linux linux-firmware nano vim dhcpcd
-
+#generate the config of the disks
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 clear 
+echo "check if the fstab is correct (should have all /dev/sda(1,2,3,4)"
 cat /mnt/etc/fstab
 sleep 5
 
+clear
+echo "Changing to the /dev/sda3/ disk, bye :)"
+echo "be sure to run the other script (arch_install_after_chroot.sh)"
+sleep 3
+clear
 arch-chroot /mnt
