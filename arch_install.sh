@@ -29,8 +29,9 @@ lsblk
 sleep 6
 clear 
 
+# open the nano editor for you to check if the mirror's is correct
 nano /etc/pacman.d/mirrorlist
-
+# download all the necessary parts for the linux work
 pacstrap /mnt base base-devel linux linux-firmware nano vim dhcpcd
 #generate the config of the disks
 genfstab -U -p /mnt >> /mnt/etc/fstab
