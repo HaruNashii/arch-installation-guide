@@ -17,19 +17,21 @@ nano /etc/locale.gen
 locale-gen
 
 #change the name of the host for "blake"
-hostnamectl set-hostname blake
+clear
+read -p "write the name of the user: " username
+hostnamectl set-hostname $username
 clear 
 echo "Create the Root Password"
 passwd
 
 #add permissions for your user "blake" to use varios commands and others things
-useradd -m -g users -G wheel,storage,power -s /bin/bash blake
+useradd -m -g users -G wheel,storage,power -s /bin/bash $username
 clear
 echo "Create the user Password"
-passwd blake
+passwd $username
 
 #download useful packages that will help you and grub the system bootloader
-pacman -S os-prober network-manager-applet networkmanager grub efibootmgr
+pacman -S os-prober networkmanager grub efibootmgr
 
 clear 
 echo "Its Time My Friend, Its Time For The GRUB INSTALLLL"
