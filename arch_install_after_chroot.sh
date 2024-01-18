@@ -16,21 +16,23 @@ nano /etc/locale.gen
 #apply the locale.gen config in your system
 locale-gen
 
-#change the name of the host for "blake"
 clear
+#ask the name of the user and create the user with the name that you put
 read -p "write the name of the user: " username
 hostnamectl set-hostname $username
 clear 
+#ask for you define one password for the root user *this is very important don't forget it*
 echo "Create the Root Password"
 passwd
 
-#add permissions for your user "blake" to use varios commands and others things
+#add permissions for your user to use varios commands and others things
 useradd -m -g users -G wheel,storage,power -s /bin/bash $username
 clear
+#ask for you define one password for your user *this is very important don't forget it*
 echo "Create the user Password"
 passwd $username
 
-#download useful packages that will help you and grub the system bootloader
+#download useful packages that will help you, and grub the system bootloader
 pacman -S os-prober networkmanager grub efibootmgr
 
 clear 
