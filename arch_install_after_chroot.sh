@@ -43,3 +43,7 @@ echo "so... that the fight begins"
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+echo "i will not make code for see if the grub give error or not, but if its not give an error, good luck installing one DE/WM/GUI, i will not help with that"
