@@ -17,9 +17,8 @@ nano /etc/locale.gen
 locale-gen
 
 clear
-#ask the name of the user and create the user with the name that you put
+#ask the name of the user for create the user after
 read -p "write the name of the user: " username
-hostnamectl set-hostname $username
 clear 
 #ask for you define one password for the root user *this is very important don't forget it*
 echo "Create the Root Password"
