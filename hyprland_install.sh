@@ -1,0 +1,42 @@
+#!/bin/bash
+
+
+#-add an argument for the while be a loop
+x=1
+clear 
+echo "You Want The Hyprland With The Following Utilities : (waybar, Grim, wl_clipboard, wofi, hyprpaper)?"
+read -p "('Y' or 'N'): " answer
+while [ $x -le 2 ]; do
+
+	    case $answer in
+	        [Yy]*)
+			clear
+			echo "If The Option Of Fonts Appear, I Recommend Your Select The Second 'notosans'"
+			pacman -S hyprland sddm kitty hyprpaper wofi grim wl-clipboard
+	            break
+	            ;;
+	        [Nn]*)
+			clear
+			echo "If The Option Of Fonts Appear, I Recommend Your Select The Second 'notosans'"
+			pacman -S hyprland sddm kitty
+	            break
+	            ;;
+	        *)
+		    echo "Invalid input. Please enter either 'Y' or 'N'"
+		    read -p "asnwer : " answer
+	            ;;
+	    esac
+done
+
+
+
+systemctl enable sddm
+
+#download and install the pipewire, and remove the pulseaudio
+sudo pacman -Rdd pulseaudio
+sudo pacman -Sy --needed --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
+
+systemctl --user daemon-reload
+systemctl --user --now disable pulseaudio.service pulseaudio.socket
+systemctl --user mask pulseaudio
+systemctl --user --now enable pipewire pipewire-pulse

@@ -9,8 +9,7 @@ while [ $x -le 2 ]; do
 
 	    case $answer in
 	        [Yy]*)
-
-#download all network modules needed
+clear
 sudo pacman -S --noconfirm iwd networkmanager dhcpcd
 
 #enable the network modules to start with the system
@@ -29,6 +28,7 @@ systemctl start dhcpcd
 dhcpcd
 
 #configure your network host name
+clear
 read -p "Select The Name of the network host" hostname
 sudo hostnamectl set-hostname $hostname
 
@@ -60,6 +60,7 @@ echo "Done."
 	            break
 	            ;;
 	        [Nn]*)
+		    echo "Ok, Nothing To Do."
 	            break
 	            ;;
 	        *)

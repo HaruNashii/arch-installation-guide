@@ -1,11 +1,25 @@
 #!/bin/bash
 
 chmod a+x $PWD/arch_install_after_chroot.sh
+chmod a+x $PWD/wifi_configuration.sh
+chmod a+x $PWD/hyprland_install.sh
 
+read -p "What Device Will Be Your Boot Partition? :" bootpartition
 #convert the /dev/sda1 in to FAT32
-mkfs.fat -F32 /dev/sda1
+mkfs.fat -F32 $bootpartition
 #convert the /dev/sda2 to be the swap
-mkswap /dev/sda2
+read -p "What Device Will Be Your Swap? :" swapdevice
+mkswap $swapdevice
+
+
+clear
+read -p "What Device Will Be Your Root Partition? :" rootpartition
+sleep 1
+clear
+read -p "What Device Will Be Your Home Partition? :" homepartition
+sleep 1
+clear
+
 
 #-add an argument for the while be a loop
 x=1
@@ -17,17 +31,23 @@ while [ $x -le 2 ]; do
 
 	    case $answer in
 	        [1]*)
+		    clear
 		    #convert the /dev/sda3 in to ext4
-		    mkfs.ext4 /dev/sda3 
+		    mkfs.ext4 $rootpartition
+		    clear
+
 		    #convert the /dev/sda4 in to ext4
-		    mkfs.ext4 /dev/sda4
+		    mkfs.ext4 $homepartition
 	            break
 	            ;;
 	        [2]*)
+		    clear
 		    #convert the /dev/sda3 in to btrfs
-		    mkfs.btrfs -f /dev/sda3 	
+		    mkfs.btrfs -f $rootpartition
+		    clear
+
 		    #convert the /dev/sda4 in to btrfs
-		    mkfs.btrfs -f /dev/sda4
+		    mkfs.btrfs -f $homepartition
 	            break
 	            ;;
 	        *)
@@ -39,18 +59,18 @@ done
 
 
 #mount the "/" of /dev/sda3 in /mnt
-mount /dev/sda3 /mnt 
+mount $rootpartition /mnt 
 #create the boot folder in the / folder of the /dev/sda3
 mkdir /mnt/boot
 mkdir /mnt/boot/efi
 #mount the "/boot" of /dev/sda1 in /mnt
-mount /dev/sda1 /mnt/boot/efi
+mount $bootpartition /mnt/boot/efi
 #create the home folder in the / folder of the /dev/sda3
 mkdir /mnt/home
 #mount the "/home" of /dev/sda4 in /mnt
-mount /dev/sda4 /mnt/home
+mount $homepartition /mnt/home
 #turn on the swap
-swapon /dev/sda2
+swapon $swapdevice
 
 clear
 echo "check if everything is correctly mounted"
@@ -71,16 +91,39 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 
 clear 
-echo "check if the fstab is correct (should have all /dev/sda(1,2,3,4)"
+echo "check if the fstab is correct (should have all your partitions [root, boot, home, swap])"
 sleep 2
 cat /mnt/etc/fstab
 sleep 5
 
 
 
+
+
+#-add an argument for the while be a loop
+x=1
+clear 
+echo "You Want To Move The 'Wifi Configuration Script' To Your Mounted Folder Before the Chroot?"
+read -p "('Y' or 'N'): " answer_two
+while [ $x -le 2 ]; do
+
+	    case $answer_two in
+	        [Yy]*)
+	            break
+	            ;;
+	        [Nn]*)
+	            break
+	            ;;
+	        *)
+		    echo "Invalid input. Please enter either 'Y' or 'N'."
+		    read -p "asnwer : " answer_two
+	            ;;
+	    esac
+done
+
+
+
 clear
-echo "Changing to the /dev/sda3/ disk, bye :)"
-echo "be sure to run the other script (arch_install_after_chroot.sh)"
-sleep 3
-clear
-arch-chroot /mnt
+echo "Running Chroot..."
+sleep 2
+exec ./arch_install_after_chroot.sh

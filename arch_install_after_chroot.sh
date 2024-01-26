@@ -1,5 +1,8 @@
 #!/bin/bash
- 
+
+#make the chroot to the root of your installation
+arch-chroot /mnt
+
 #change the system settings of the timezone to Brazil Sao Paulo :)
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 #syncronize the timezone settings with the system
@@ -77,7 +80,28 @@ echo "so... that the fight begins"
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
+sleep 3
 
+#-add an argument for the while be a loop
+x=1
+echo "You Want To Install Hyprland?"
+read -p "('Y' or 'N'): " answer_two
+while [ $x -le 2 ]; do
 
-
-echo "i will not make code for see if the grub give error or not, but if its not give an error, good luck installing one DE/WM/GUI, i will not help with that"
+	    case $answer_two in
+	        [Yy]*)
+		    clear
+		    ./hyprland_install.sh
+	            break
+	            ;;
+	        [Nn]*)
+		    clear
+		    echo "Ok, Nothing More To Do."
+	            break
+	            ;;
+	        *)
+		    echo "Invalid input. Please enter either 'Y' or 'N'."
+		    read -p "asnwer : " answer_two
+	            ;;
+	    esac
+done
