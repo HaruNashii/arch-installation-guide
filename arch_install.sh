@@ -41,6 +41,7 @@ done
 #mount the "/" of /dev/sda3 in /mnt
 mount /dev/sda3 /mnt 
 #create the boot folder in the / folder of the /dev/sda3
+mkdir /mnt/boot
 mkdir /mnt/boot/efi
 #mount the "/boot" of /dev/sda1 in /mnt
 mount /dev/sda1 /mnt/boot/efi
@@ -72,7 +73,6 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 clear 
 echo "check if the fstab is correct (should have all /dev/sda(1,2,3,4)"
 sleep 2
-clear
 cat /mnt/etc/fstab
 sleep 5
 
