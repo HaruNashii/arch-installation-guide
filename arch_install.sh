@@ -1,6 +1,8 @@
 #!/bin/bash
 
+#add permission for the other scripts be executed
 chmod a+x $PWD/arch_install_after_chroot.sh
+chmod a+x $PWD/wifi_configuration.sh
 
 #convert the /dev/sda1 in to FAT32
 mkfs.fat -F32 /dev/sda1
