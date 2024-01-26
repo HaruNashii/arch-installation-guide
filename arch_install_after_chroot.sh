@@ -41,11 +41,11 @@ while [ $x -le 2 ]; do
 
 	    case $answer in
 	        [1]*)
-             pacman -S networkmanager dhcpcd
+             pacman -S --noconfirm networkmanager dhcpcd
 	            break
 	            ;;
 	        [2]*)
-	            pacman -S iwd networkmanager dhcpcd
+	            pacman -S --noconfirm iwd networkmanager dhcpcd
 	            break
 	            ;;
 	        *)
@@ -56,9 +56,18 @@ while [ $x -le 2 ]; do
 done
 
 
-#download grub the system bootloader
-pacman -S grub efibootmgr
 
+
+
+#download grub the system bootloader and the sudo (the previlege manager)
+pacman -S --noconfirm grub efibootmgr sudo
+
+clear
+echo "THIS STEP IS VERY IMPORTANT DONT MISS IT
+echo "you need to uncomment the string "%wheel ALL=(ALL:ALL) ALL"
+echo "the nano with the file that you need to change will be open in 7 secs"
+sleep 7
+nano /etc/sudoers
 
 clear 
 echo "Its Time My Friend, Its Time For The GRUB INSTALLLL"
