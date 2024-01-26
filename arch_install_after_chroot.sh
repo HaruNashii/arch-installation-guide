@@ -32,8 +32,33 @@ clear
 echo "Create the user Password"
 passwd $username
 
-#download useful packages that will help you, and grub the system bootloader
-pacman -S os-prober networkmanager grub efibootmgr
+
+#-add an argument for the while be a loop
+x=1
+echo "you will use internet via Ethernet or Wi-Fi"
+echo "1 = Ethernet, 2 = Wi-Fi"
+read -p "asnwer : " answer
+while [ $x -le 2 ]; do
+
+	    case $answer in
+	        [1]*)
+             pacman -S networkmanager
+	            break
+	            ;;
+	        [2]*)
+	            pacman -S iwd
+	            break
+	            ;;
+	        *)
+		    echo "Invalid input. Please enter either '1' for (Ethernet) or '2' for (Wi-Fi)."
+		    read -p "asnwer : " answer
+	            ;;
+	    esac
+done
+
+
+#download grub the system bootloader
+pacman -S grub efibootmgr
 
 clear 
 echo "Its Time My Friend, Its Time For The GRUB INSTALLLL"
