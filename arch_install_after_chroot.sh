@@ -41,11 +41,11 @@ while [ $x -le 2 ]; do
 
 	    case $answer in
 	        [1]*)
-             pacman -S networkmanager
+             pacman -S networkmanager dhcpcd
 	            break
 	            ;;
 	        [2]*)
-	            pacman -S iwd
+	            pacman -S iwd networkmanager dhcpcd
 	            break
 	            ;;
 	        *)
@@ -58,6 +58,7 @@ done
 
 #download grub the system bootloader
 pacman -S grub efibootmgr
+
 
 clear 
 echo "Its Time My Friend, Its Time For The GRUB INSTALLLL"
