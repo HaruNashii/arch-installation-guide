@@ -1,8 +1,10 @@
 #!/bin/bash
 
+#add permission for the other scripts be executed
 chmod a+x $PWD/arch_install_after_chroot.sh
 chmod a+x $PWD/wifi_configuration.sh
 chmod a+x $PWD/hyprland_install.sh
+chmod a+x $PWD/rice.sh
 
 read -p "What Device Will Be Your Boot Partition? :" bootpartition
 #convert the /dev/sda1 in to FAT32
@@ -98,32 +100,14 @@ sleep 5
 
 
 
-
-
-#-add an argument for the while be a loop
-x=1
-clear 
-echo "You Want To Move The 'Wifi Configuration Script' To Your Mounted Folder Before the Chroot?"
-read -p "('Y' or 'N'): " answer_two
-while [ $x -le 2 ]; do
-
-	    case $answer_two in
-	        [Yy]*)
-	            break
-	            ;;
-	        [Nn]*)
-	            break
-	            ;;
-	        *)
-		    echo "Invalid input. Please enter either 'Y' or 'N'."
-		    read -p "asnwer : " answer_two
-	            ;;
-	    esac
-done
-
-
+clear
+echo "moving arch-install-script to mounted devices..."
+mkdir /mnt/arch-install-help-for-my-friend
+cp -rf $PWD/* /mnt/arch-install-help-for-my-friend/
+sleep 1
 
 clear
+echo "Done."
 echo "Running Chroot..."
 sleep 2
 exec ./arch_install_after_chroot.sh
