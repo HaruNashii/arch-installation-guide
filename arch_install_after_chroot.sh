@@ -66,16 +66,15 @@ done
 pacman -S --noconfirm grub efibootmgr sudo
 
 clear
-echo "THIS STEP IS VERY IMPORTANT DONT MISS IT
-echo "you need to uncomment the string "%wheel ALL=(ALL:ALL) ALL"
+echo "THIS STEP IS VERY IMPORTANT DONT MISS IT"
+echo "you need to uncomment the string '%wheel ALL=(ALL:ALL) ALL'"
 echo "the nano with the file that you need to change will be open in 7 secs"
 sleep 7
 nano /etc/sudoers
 
 clear 
-echo "Its Time My Friend, Its Time For The GRUB INSTALLLL"
+echo "Installing GRUB"
 sleep 2 
-echo "so... that the fight begins"
 #try to install the grub on your machine using the ufi method
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
 #try to generate the grub config
