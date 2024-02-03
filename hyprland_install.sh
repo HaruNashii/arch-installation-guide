@@ -28,7 +28,33 @@ while [ $x -le 2 ]; do
 	    esac
 done
 
+#-add an argument for the while be a loop
+x=1
+clear 
+echo "You Want To Install My Dotfiles?"
+read -p "('Y' or 'N'): " answer
+while [ $x -le 2 ]; do
 
+	    case $answer in
+	        [Yy]*)
+			if [ -f "$PWD/rice.sh" ]; then
+				./rice.shnt
+			else
+				cd $PWD/arch-install-help-for-my-friend
+    				./rice.sh
+   			fi
+      			pacman -R kitty
+	            break
+	            ;;
+	        [Nn]*)
+	            break
+	            ;;
+	        *)
+		    echo "Invalid input. Please enter either 'Y' or 'N'"
+		    read -p "asnwer : " answer
+	            ;;
+	    esac
+done
 
 systemctl enable sddm
 
