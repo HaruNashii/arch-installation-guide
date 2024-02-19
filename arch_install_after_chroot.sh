@@ -48,7 +48,7 @@ while [ $x -le 2 ]; do
 	            break
 	            ;;
 	        [2]*)
-	            pacman -S --noconfirm iwd networkmanager dhcpcd
+	            pacman -S --noconfirm iwd dhcpcd dhcpcd
 	            break
 	            ;;
 	        *)
