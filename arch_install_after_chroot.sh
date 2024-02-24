@@ -58,6 +58,7 @@ while [ $x -le 2 ]; do
 	            ;;
 	        [2]*)
 	            pacman -S --noconfirm iwd dhcpcd dhcp
+             systemctl enable iwd
              systemctl enable dhcpcd
 	            break
 	            ;;
