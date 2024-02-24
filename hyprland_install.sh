@@ -56,13 +56,5 @@ while [ $x -le 2 ]; do
 	    esac
 done
 
+# enable the login manager
 systemctl enable sddm
-
-#download and install the pipewire, and remove the pulseaudio
-sudo pacman -Rdd pulseaudio
-sudo pacman -Sy --needed --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
-
-systemctl --user daemon-reload
-systemctl --user --now disable pulseaudio.service pulseaudio.socket
-systemctl --user mask pulseaudio
-systemctl --user --now enable pipewire pipewire-pulse
