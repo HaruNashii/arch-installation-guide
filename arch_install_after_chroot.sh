@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#make the chroot to the root of your installation
+#make the chroot to '/'
 arch-chroot /mnt
 
 #change the system settings of the timezone to Brazil Sao Paulo :)
@@ -23,9 +23,6 @@ clear
 #ask the name of the user for create the user after
 read -p "write the name of the user: " username
 clear 
-#ask for you define one password for the root user *this is very important don't forget it*
-echo "Create the Root Password"
-passwd
 
 #add permissions for your user to use varios commands and others things
 useradd -m -g users -G wheel,storage,power -s /bin/bash $username
@@ -34,6 +31,10 @@ clear
 echo "Create the user Password"
 passwd $username
 
+
+#ask for you define one password for the root user *this is very important don't forget it*
+echo "Create the Root Password"
+passwd
 
 #install the sudo
 pacman -Sy --noconfirm sudo
