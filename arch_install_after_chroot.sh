@@ -97,8 +97,8 @@ sleep 3
 
 
 
-
-
+#uninstall nano, it have no more use
+pacman -R --noconfirm nano
 
 
 
@@ -116,6 +116,7 @@ systemctl --user --now enable pipewire pipewire-pulse
 
 #-add an argument for the while be a loop
 x=1
+clear
 echo "You Want To Install Hyprland?"
 read -p "('Y' or 'N'): " answer_two
 while [ $x -le 2 ]; do
