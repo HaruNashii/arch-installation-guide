@@ -82,42 +82,18 @@ sleep 7
 nano /etc/sudoers
 
 
-
-#-add an argument for the while be a loop
-x=1
 clear
-echo "Choose Your BootLoader"
-read -p "('1' = GRUB, '2'=SYSTEMD-BOOT): " answer_two
-while [ $x -le 2 ]; do
-
-            case $answer_two in
-                [1]*)
-                    clear
-                    #download grub the system bootloader
-                    pacman -S --noconfirm grub efibootmgr
+#download grub the system bootloader
+pacman -S --noconfirm grub efibootmgr
 
 clear 
 echo "Installing GRUB"
-sleep 2 
+sleep 2
 #try to install the grub on your machine using the ufi method
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
 sleep 3
-                    break
-                    ;;
-                [2]*)
-                    clear
-                    #install the systemd-boot bootloader
-                    bootctl install
-                    break
-                    ;;
-                *)
-                    echo "Invalid input. Please enter either 'Y' or 'N'."
-                    read -p "asnwer : " answer_two
-                    ;;
-            esac
-done
 
 
 
@@ -130,8 +106,6 @@ done
 sudo pacman -Rdd pulseaudio
 sudo pacman -Sy --needed --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
 
-#change the active user to the created user
-su $username
 
 #active the pipewire service and exclude the pulseaudio service
 systemctl --user daemon-reload
@@ -139,8 +113,6 @@ systemctl --user --now disable pulseaudio.service pulseaudio.socket
 systemctl --user mask pulseaudio
 systemctl --user --now enable pipewire pipewire-pulse
 
-#go back to the installation normal user (root)
-exit
 
 #-add an argument for the while be a loop
 x=1
