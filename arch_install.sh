@@ -85,7 +85,7 @@ clear
 echo "check if everything is correctly mounted"
 lsblk
 sleep 6
-
+clear
 
 
 #install the base of linux and others useful tools in the /dev/sda3 the root of your system
