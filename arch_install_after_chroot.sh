@@ -29,11 +29,12 @@ clear
 echo "Create the user Password"
 passwd $username
 
-
+clear
 #ask for you define one password for the root user *this is very important don't forget it*
 echo "Create the Root Password"
 passwd
 
+clear
 #install the sudo
 pacman -Sy --noconfirm sudo
 
@@ -42,6 +43,7 @@ pacman -Sy --noconfirm sudo
 
 #-add an argument for the while be a loop
 x=1
+clear
 echo "you will use internet via Ethernet or Wi-Fi"
 echo "1 = Ethernet, 2 = Wi-Fi"
 read -p "asnwer : " answer
@@ -85,6 +87,7 @@ nano /etc/sudoers
 
 #-add an argument for the while be a loop
 x=1
+clear
 echo "Choose Your BootLoader"
 read -p "('1' = GRUB, '2'=SYSTEMD-BOOT): " answer_two
 while [ $x -le 2 ]; do
