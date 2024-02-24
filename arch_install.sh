@@ -87,7 +87,7 @@ sleep 6
 
 
 #install the base of linux and others useful tools in the /dev/sda3 the root of your system
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware nano
 
 #generate the config of all your disks
 genfstab -U -p /mnt >> /mnt/etc/fstab
