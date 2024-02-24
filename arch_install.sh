@@ -6,9 +6,11 @@ chmod a+x $PWD/wifi_configuration.sh
 chmod a+x $PWD/hyprland_install.sh
 chmod a+x $PWD/rice.sh
 
+clear
 read -p "What Device Will Be Your Boot Partition? :" bootpartition
 #convert the boot partition to FAT32
 mkfs.fat -F32 $bootpartition
+clear
 #convert the swap partition to swap
 read -p "What Device Will Be Your Swap? :" swapdevice
 mkswap $swapdevice
