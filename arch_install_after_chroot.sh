@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#make the chroot to '/'
-arch-chroot /mnt
 
 #change the system settings of the timezone to Brazil Sao Paulo :)
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
