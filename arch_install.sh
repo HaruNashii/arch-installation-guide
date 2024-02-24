@@ -60,17 +60,22 @@ while [ $x -le 2 ]; do
 done
 
 
-#mount the "/" of /dev/sda3 in /mnt
+#mount the "/" in /mnt
 mount $rootpartition /mnt 
-#create the boot folder in the / folder of the /dev/sda3
+
+#create the boot folder in the "/" folder
 mkdir /mnt/boot
 mkdir /mnt/boot/efi
-#mount the "/boot" of /dev/sda1 in /mnt
+
+#mount the "boot" in /mnt/boot/efi
 mount $bootpartition /mnt/boot/efi
-#create the home folder in the / folder of the /dev/sda3
+
+#create the home folder in the "/" folder
 mkdir /mnt/home
-#mount the "/home" of /dev/sda4 in /mnt
+
+#mount the "/home" in /mnt
 mount $homepartition /mnt/home
+
 #turn on the swap
 swapon $swapdevice
 
@@ -80,10 +85,6 @@ lsblk
 sleep 6
 
 
-clear 
-echo "check if the mirrorlist is correct"
-sleep 3
-nano /etc/pacman.d/mirrorlist
 
 #install the base of linux and others useful tools in the /dev/sda3 the root of your system
 pacstrap /mnt base linux linux-firmware
@@ -94,7 +95,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 clear 
 echo "check if the fstab is correct (should have all your partitions [root, boot, home, swap])"
-sleep 2
+sleep 4
 cat /mnt/etc/fstab
 sleep 5
 
