@@ -107,7 +107,8 @@ systemctl --user --now disable pulseaudio.service pulseaudio.socket
 systemctl --user mask pulseaudio
 systemctl --user --now enable pipewire pipewire-pulse
 
-
+#go back to the installation normal user (root)
+su root
 
 #-add an argument for the while be a loop
 x=1
