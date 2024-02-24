@@ -53,13 +53,11 @@ while [ $x -le 2 ]; do
 	        [1]*)
              pacman -S --noconfirm networkmanager dhcpcd dhcp
              systemctl enable NetworkManager
-             systemctl enable dhcp
              systemctl enable dhcpcd
 	            break
 	            ;;
 	        [2]*)
 	            pacman -S --noconfirm iwd dhcpcd dhcp
-             systemctl enable dhcp
              systemctl enable dhcpcd
 	            break
 	            ;;
