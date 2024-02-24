@@ -35,7 +35,8 @@ echo "Create the user Password"
 passwd $username
 
 
-
+#install the sudo
+pacman -Sy --noconfirm sudo
 
 
 
@@ -72,8 +73,7 @@ done
 
 
 
-#download grub the system bootloader and the sudo (the previlege manager)
-pacman -S --noconfirm grub efibootmgr sudo
+
 
 clear
 echo "THIS STEP IS VERY IMPORTANT DONT MISS IT"
@@ -81,6 +81,20 @@ echo "you need to uncomment the string '%wheel ALL=(ALL:ALL) ALL'"
 echo "the nano with the file that you need to change will be open in 7 secs"
 sleep 7
 nano /etc/sudoers
+
+
+
+#-add an argument for the while be a loop
+x=1
+echo "Choose Your BootLoader"
+read -p "('1' = GRUB, '2'=SYSTEMD-BOOT): " answer_two
+while [ $x -le 2 ]; do
+
+            case $answer_two in
+                [1]*)
+                    clear
+                    #download grub the system bootloader
+                    pacman -S --noconfirm grub efibootmgr
 
 clear 
 echo "Installing GRUB"
@@ -90,6 +104,24 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
 sleep 3
+                    break
+                    ;;
+                [2]*)
+                    clear
+                    #install the systemd-boot bootloader
+                    bootctl install
+                    break
+                    ;;
+                *)
+                    echo "Invalid input. Please enter either 'Y' or 'N'."
+                    read -p "asnwer : " answer_two
+                    ;;
+            esac
+done
+
+
+
+
 
 
 
