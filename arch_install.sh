@@ -7,9 +7,9 @@ chmod a+x $PWD/hyprland_install.sh
 chmod a+x $PWD/rice.sh
 
 read -p "What Device Will Be Your Boot Partition? :" bootpartition
-#convert the /dev/sda1 in to FAT32
+#convert the boot partition to FAT32
 mkfs.fat -F32 $bootpartition
-#convert the /dev/sda2 to be the swap
+#convert the swap partition to swap
 read -p "What Device Will Be Your Swap? :" swapdevice
 mkswap $swapdevice
 
@@ -26,7 +26,7 @@ clear
 #-add an argument for the while be a loop
 x=1
 clear 
-echo "What Filesystem Format You Will Use For '/' (/dev/sda3) and '/home' (/dev/sda4)"
+echo "What Filesystem Format You Will Use For The (Root Partition) And (Home Partition)"
 echo "1 = ext4, 2 = btrfs"
 read -p "asnwer : " answer
 while [ $x -le 2 ]; do
@@ -34,21 +34,21 @@ while [ $x -le 2 ]; do
 	    case $answer in
 	        [1]*)
 		    clear
-		    #convert the /dev/sda3 in to ext4
+		    #convert the root partitiom in to ext4
 		    mkfs.ext4 $rootpartition
 		    clear
 
-		    #convert the /dev/sda4 in to ext4
+		    #convert the home partition in to ext4
 		    mkfs.ext4 $homepartition
 	            break
 	            ;;
 	        [2]*)
 		    clear
-		    #convert the /dev/sda3 in to btrfs
+		    #convert the root partition in to btrfs
 		    mkfs.btrfs -f $rootpartition
 		    clear
 
-		    #convert the /dev/sda4 in to btrfs
+		    #convert the home partition in to btrfs
 		    mkfs.btrfs -f $homepartition
 	            break
 	            ;;
