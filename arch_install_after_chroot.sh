@@ -35,6 +35,11 @@ echo "Create the user Password"
 passwd $username
 
 
+
+
+
+
+
 #-add an argument for the while be a loop
 x=1
 echo "you will use internet via Ethernet or Wi-Fi"
@@ -85,6 +90,24 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
 sleep 3
+
+
+
+
+#download and install the pipewire, and remove the pulseaudio
+sudo pacman -Rdd pulseaudio
+sudo pacman -Sy --needed --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
+
+#change the active user to the created user
+su $username
+
+#active the pipewire service and exclude the pulseaudio service
+systemctl --user daemon-reload
+systemctl --user --now disable pulseaudio.service pulseaudio.socket
+systemctl --user mask pulseaudio
+systemctl --user --now enable pipewire pipewire-pulse
+
+
 
 #-add an argument for the while be a loop
 x=1
