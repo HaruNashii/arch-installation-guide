@@ -112,5 +112,8 @@ sleep 1
 clear
 echo "Done."
 echo "Running Chroot..."
+echo "Dont forget to run the 'arch_install_after_chroot.sh' script after the chroot"
 sleep 2
-exec ./arch_install_after_chroot.sh
+clear
+arch-chroot /mnt
+
