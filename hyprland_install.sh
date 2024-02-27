@@ -11,7 +11,7 @@ while [ $x -le 2 ]; do
 	    case $answer in
 	        [Yy]*)
 			clear
-			echo "If The Option Of Fonts Appear, I Recommend Your Select The Second 'notosans'"
+			echo "If The Option Of Fonts Appear, I REALLY Recommend Your Select The Second 'notosans'"
 			pacman -S hyprland sddm kitty hyprpaper wofi grim wl-clipboard
 	            break
 	            ;;
