@@ -17,7 +17,7 @@ while [ $x -le 2 ]; do
 	            ;;
 	        [Nn]*)
 			clear
-			echo "If The Option Of Fonts Appear, I Recommend Your Select The Second 'notosans'"
+			echo "If The Option Of Fonts Appear, I REALLY Recommend Your Select The Second 'noto-fonts'"
 			pacman -S hyprland sddm kitty
 	            break
 	            ;;
