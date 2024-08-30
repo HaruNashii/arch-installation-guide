@@ -1,5 +1,5 @@
 # install nvidia drivers
-sudo pacman -S --needed dkms nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-setting vulkan-icd-loader egl-wayland
+sudo pacman -S --needed dkms nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader egl-wayland
 
 # change the nvidia kernel module to support wayland
 # necessary to use (gnome on wayland/hyprland, etc)
