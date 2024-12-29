@@ -87,19 +87,19 @@
 > **you can list the available countries within in your continents with "```ls /usr/share/zoneinfo/your_continent/```"** command
 
   **1) you need to set your timezone, you can do it with the command:**
-     - "```ln -sf /usr/share/zoneinfo/your_continent/your_country```"
+  - "```ln -sf /usr/share/zoneinfo/your_continent/your_country```"
 
   **2) then you need to sync your system with your defined timezone, you can do it with the command:**
-     - "```hwclock --systohc```"
+  - "```hwclock --systohc```"
     
   **3) you will need to download a text editor to edit the locale config file, you can do it with the command:**
-     - "```pacman -Sy nano```"
+  - "```pacman -Sy nano```"
     
   **4) then you will need to edit the locale file, you will need to uncomment (remove the '#' from your desired locale), per example, if you want the US locale, you need to remove the '#' in the "en_US.UTF-8 UTF-8" line, also take note to uncommend the line that has the UTF-8 text, you can open the text editor with the following command:**
-     - "```nano /etc/locale.gen```"
+  - "```nano /etc/locale.gen```"
     
   **5) then you need to sync your system with your defined locale, you can do it with the command:**
-     - "```locale-gen```"
+  - "```locale-gen```"
 </details>
 
 
