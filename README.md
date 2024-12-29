@@ -159,7 +159,7 @@
 
 
 
-and GG, your Raw Arch is installed, and you can say that you use Arch BTW!!!!
+GG, your ""Raw"" Arch Linux is installed, now you can say "I use Arch BTW!!!!"
 
 <details>
 <summary>all commands used</summary>
