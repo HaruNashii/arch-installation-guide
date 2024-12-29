@@ -164,31 +164,31 @@ and GG, your Raw Arch is installed, and you can say that you use Arch BTW!!!!
 <details>
 <summary>all commands used</summary>
   
-cfdisk
-mkfs.ext4 root_partition_name
-mkfs.fat -F 32 boot_partition_name
-mkswap swap_partition_name
-mount root_partition_name /mnt
-mkdir -p /mnt/boot/efi
-mount boot_partition_name /mnt/boot/efi
-swapon swap_partition_name
-pacstrap /mnt base linux linux-firmware
-genfstab -U -p /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
-ln -sf /usr/share/zoneinfo/your_continent/your_time_zone /etc/localtime
-hwclock --systohc
-pacman -S nano
-nano /etc/locale.gen
-locale-gen
-useradd -m -g users -G wheel,storage,power -s /bin/bash your_username
-passwd your_username
-passwd
-pacman -S --noconfirm networkmanager dhcpcd dhcp
-systemctl enable NetworkManager dhcpcd
-nano /etc/sudoers
-pacman -S --noconfirm grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
+- cfdisk
+- mkfs.ext4 root_partition_name
+- mkfs.fat -F 32 boot_partition_name
+- mkswap swap_partition_name
+- mount root_partition_name /mnt
+- mkdir -p /mnt/boot/efi
+- mount boot_partition_name /mnt/boot/efi
+- swapon swap_partition_name
+- pacstrap /mnt base linux linux-firmware
+- genfstab -U -p /mnt >> /mnt/etc/fstab
+- arch-chroot /mnt
+- ln -sf /usr/share/zoneinfo/your_continent/your_time_zone /etc/localtime
+- hwclock --systohc
+- pacman -S nano
+- nano /etc/locale.gen
+- locale-gen
+- useradd -m -g users -G wheel,storage,power -s /bin/bash your_username
+- passwd your_username
+- passwd
+- pacman -S --noconfirm networkmanager dhcpcd dhcp
+- systemctl enable NetworkManager dhcpcd
+- nano /etc/sudoers
+- pacman -S --noconfirm grub efibootmgr
+- grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
+- grub-mkconfig -o /boot/grub/grub.cfg
 
 </details>
 
