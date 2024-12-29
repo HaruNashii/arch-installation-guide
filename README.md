@@ -48,7 +48,7 @@
 
 **3) after you create all necessary partitions, define the correct types and format everything, you need to mount those partition**
 - root partition needs to be mounted in "/mnt", with the "```mount your_partition_name /mnt```" command
-- boot partition needs to be mounted in "/mnt/boot/efi", but those folders doesn't exist yet, so you need to create them with the "```mkdir -p /mnt/boot/efi```" command and mount with with the "```mount your_partition_name /mnt```" command
+- boot partition needs to be mounted in "/mnt/boot/efi", but those folders doesn't exist yet, so you need to create them with the "```mkdir -p /mnt/boot/efi```" command and mount with with the "```mount your_partition_name /mnt/boot/efi```" command
 - swap partition needs to be ""turned on"" with the "```swapon your_partition_name```" command
 
 </details>
