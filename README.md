@@ -168,7 +168,7 @@ then enable gdm to start when the system boot
 - "```systemctl enable gdm```"
 
 **option 2) Install KDE and SDDM, you can do it with the command:**
-- "```pacman -Sy plasma-desktop sddm"
+- "```pacman -Sy plasma-desktop sddm```"
 then enable gdm to start when the system boot
 - "```systemctl enable sddm```"
 
