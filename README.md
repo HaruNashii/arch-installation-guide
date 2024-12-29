@@ -162,19 +162,16 @@
 <details>
 <summary>(Optional Step) - Install an Desktop Envinroment or an Window Manager</summary>
 
-**option 1) Install GNOME and GDM, you can do it with the command:**
+**(Option 1) Install GNOME and GDM, then enable the GDM to start with the system, you can do it with the command:**
 - "```pacman -Sy gnome gdm```"
-then enable gdm to start when the system boot
 - "```systemctl enable gdm```"
 
-**option 2) Install KDE and SDDM, you can do it with the command:**
+**(Option 2) Install KDE and SDDM, then enable the SDDM to start with the system, you can do it with the command:**
 - "```pacman -Sy plasma-desktop sddm```"
-then enable gdm to start when the system boot
 - "```systemctl enable sddm```"
 
-**option 3) Install Hyprland and SDDM, you can do it with the command:**
+**(Option 3) Install Hyprland and SDDM, then enable the SDDM to start with the system, you can do it with the command:**
 - "```pacman -Sy hyprland sddm```"
-then enable gdm to start when the system boot
 - "```systemctl enable sddm```"
 
 </details>
