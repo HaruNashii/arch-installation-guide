@@ -78,22 +78,12 @@ pacman -S --noconfirm grub efibootmgr
 
 clear 
 #try to install the grub on your machine using the ufi method
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_btw --recheck
 
 #try to generate the grub config
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #uninstall nano, it have no more use
 pacman -R --noconfirm nano
-
-#download and install the pipewire, and remove the pulseaudio
-sudo pacman -Rdd pulseaudio
-sudo pacman -Sy --needed --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
-
-#active the pipewire service and exclude the pulseaudio service
-systemctl --user daemon-reload
-systemctl --user --now disable pulseaudio.service pulseaudio.socket
-systemctl --user mask pulseaudio
-systemctl --user --now enable pipewire pipewire-pulse
 
 echo "All Done, Now you can say 'I use Arch BTW' :3"
