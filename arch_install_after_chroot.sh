@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# clear the terminal
-clear
+
 
 #change the system settings of the timezone to (Brazil, Sao Paulo)
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
