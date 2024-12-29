@@ -59,7 +59,7 @@
 <summary>(Step 3) - Download the system</summary>
 
 **1) you neeed to download all the necessary packages of the system in the mounted root partition, you can do it with the command:**
-     - "```pacstrap /mnt base linux linux-firmware```"
+- "```pacstrap /mnt base linux linux-firmware```"
 
 </details>
 
