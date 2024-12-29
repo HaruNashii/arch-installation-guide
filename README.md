@@ -42,14 +42,14 @@
 
 
 **2) after your create all partition with the correct type and with the necessary size, you need to format all partitions**
-- root partition needs to be formatted with the "```mkfs.ext4 your_partition_name```" command
-- boot partition needs to be formatted with the "```mkfs.fat -F 32 your_partition_name```" command
-- swap partition needs to be formatted with the "```mkswap your_partition_name```" command
+- root partition needs to be formatted with the "```mkfs.ext4 your_root_partition_name```" command
+- boot partition needs to be formatted with the "```mkfs.fat -F 32 your_boot_partition_name```" command
+- swap partition needs to be formatted with the "```mkswap your_swap_partition_name```" command
 
 **3) after you create all necessary partitions, define the correct types and format everything, you need to mount those partition**
-- root partition needs to be mounted in "/mnt", with the "```mount your_partition_name /mnt```" command
-- boot partition needs to be mounted in "/mnt/boot/efi", but those folders doesn't exist yet, so you need to create them with the "```mkdir -p /mnt/boot/efi```" command and mount with with the "```mount your_partition_name /mnt/boot/efi```" command
-- swap partition needs to be ""turned on"" with the "```swapon your_partition_name```" command
+- root partition needs to be mounted in "/mnt", with the "```mount your_root_partition_name /mnt```" command
+- boot partition needs to be mounted in "/mnt/boot/efi", but those folders doesn't exist yet, so you need to create them with the "```mkdir -p /mnt/boot/efi```" command and mount with with the "```mount your_boot_partition_name /mnt/boot/efi```" command
+- swap partition needs to be ""turned on"" with the "```swapon your_swap_partition_name```" command
 
 </details>
 
