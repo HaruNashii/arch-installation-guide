@@ -1,5 +1,5 @@
 <details>
-<summary>(Step 1) - Connecting to an Wi-Fi, if not connected via cable</summary>
+<summary>(Step 1) - Connecting to an Wi-Fi, if not connected via Ethernet cable</summary>
 
 > **if your Ethernet cable is connected, you can skip this step**
 
