@@ -1,3 +1,7 @@
+#!/bin/bash
+
+
+
 # install nvidia drivers
 sudo pacman -S --needed nvidia nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader egl-wayland
 
