@@ -37,33 +37,6 @@ clear
 #install the sudo
 pacman -Sy --noconfirm sudo
 
-#-add an argument for the while be a loop
-x=1
-clear
-echo "you will use internet via Ethernet or Wi-Fi"
-echo "1 = Ethernet, 2 = Wi-Fi"
-read -p "asnwer : " answer
-while [ $x -le 2 ]; do
-
-	    case $answer in
-	        [1]*)
-             		pacman -S --noconfirm networkmanager dhcpcd dhcp
-             		systemctl enable NetworkManager
-             		systemctl enable dhcpcd
-	            	break
-	            ;;
-	        [2]*)
-	            	pacman -S --noconfirm iwd dhcpcd dhcp
-             		systemctl enable iwd
-             		systemctl enable dhcpcd
-	            	break
-	            ;;
-	        *)
-		    	echo "Invalid input. Please enter either '1' for (Ethernet) or '2' for (Wi-Fi)."
-		    	read -p "asnwer : " answer
-	            ;;
-	    esac
-done
 
 clear
 echo "THIS STEP IS VERY IMPORTANT DONT MISS IT"
@@ -71,6 +44,13 @@ echo "you need to uncomment the string '%wheel ALL=(ALL:ALL) ALL'"
 echo "the nano with the file that you need to change will be open in 7 secs"
 sleep 7
 nano /etc/sudoers
+
+# install the Ethernet and Wifi necessary packages
+pacman -Sy --noconfirm networkmanager dhcpcd dhcp
+# make the Ethernet and Wifi necessary packages start with the system
+systemctl enable NetworkManager
+systemctl enable dhcpcd
+
 
 clear
 #download grub the system bootloader
