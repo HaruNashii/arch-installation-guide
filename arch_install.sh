@@ -37,16 +37,13 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #add permission for the other scripts be executed
 chmod a+x $PWD/arch_install_after_chroot.sh
-chmod a+x $PWD/nvidia_sucks.sh
 
 #copy scripts do the mounted system
 mkdir /mnt/arch-install-help-for-my-friend
 cp -rf $PWD/* /mnt/arch-install-help-for-my-friend/
 
 clear
-echo "Running Chroot..."
-echo "Dont forget to run the 'arch_install_after_chroot.sh' script after the chroot"
-sleep 3
-clear
+echo "Running Chroot...\nDont forget to run the 'arch_install_after_chroot.sh' script after the chroot"
+sleep 4
 arch-chroot /mnt
 
