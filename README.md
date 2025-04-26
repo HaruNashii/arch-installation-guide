@@ -87,7 +87,7 @@
 > **you can list the available countries within in your continents with "```ls /usr/share/zoneinfo/your_continent/```"** command
 
   **1) you need to set your timezone, you can do it with the command:**
-  - "```ln -sf /usr/share/zoneinfo/your_continent/your_country```"
+  - "```ln -sf /usr/share/zoneinfo/your_continent/your_country /etc/localtime```"
 
   **2) then you need to sync your system with your defined timezone, you can do it with the command:**
   - "```hwclock --systohc```"
